@@ -99,7 +99,7 @@ mean_age = df['edad'].mean()
 med_age = df['edad'].median()
 ax.axvline(mean_age, color=accent2, linestyle='--', linewidth=2, label=f"Media: {mean_age:.2f}")
 ax.axvline(med_age, color=accent3, linestyle=':', linewidth=2.5, label=f"Mediana: {med_age:.2f}")
-ax.set_title('Distribución de edades')
+ax.set_title('Histograma: Edades de Estudiantes')
 ax.set_xlabel('Edad (años)')
 ax.set_ylabel('Frecuencia')
 ax.legend()
@@ -115,7 +115,7 @@ ax.boxplot(df['edad'], vert=False, patch_artist=True,
            boxprops=dict(facecolor=accent, color=accent),
            medianprops=dict(color='white', linewidth=2),
            whiskerprops=dict(color=accent), capprops=dict(color=accent))
-ax.set_title('Caja y bigotes: edad')
+ax.set_title('Boxplot: Dispersión de Edades')
 ax.set_xlabel('Edad (años)')
 plt.tight_layout()
 plt.show()
@@ -128,7 +128,7 @@ fig, axes = plt.subplots(1,3, figsize=(12,4), sharey=True)
 for ax, col, title, color in zip(
     axes,
     ['prog_python','usa_colab','cuenta_github'],
-    ['Programó en Python','Usó Google Colab','Cuenta de GitHub'],
+    ['Experiencia en Python','Uso de Colab','Cuenta GitHub'],
     [accent, accent2, accent3]
 ):
     counts = df[col].value_counts().reindex([True, False]).fillna(0).astype(int)
@@ -147,9 +147,9 @@ fig.savefig('03_barras_frecuencias.png', dpi=180)
 # 4) Mapas de calor 2x2 para combinaciones
 # =======================================
 pairs = [
-    ('prog_python','usa_colab','Python vs Colab'),
-    ('prog_python','cuenta_github','Python vs GitHub'),
-    ('usa_colab','cuenta_github','Colab vs GitHub')
+    ('prog_python','usa_colab','Experiencia Python / Uso Colab'),
+    ('prog_python','cuenta_github','Experiencia Python / Cuenta GitHub'),
+    ('usa_colab','cuenta_github','Uso Colab / Cuenta GitHub')
 ]
 
 for idx, (a,b,titulo) in enumerate(pairs, start=1):
@@ -163,7 +163,7 @@ for idx, (a,b,titulo) in enumerate(pairs, start=1):
 
     fig, ax = plt.subplots(figsize=(5,4))
     im = ax.imshow(t, cmap='Blues')
-    ax.set_title(f'Tabla 2×2: {titulo}')
+    ax.set_title(f'Heatmap: {titulo}')
     ax.set_xticks([0,1]); ax.set_xticklabels(['No','Sí'])
     ax.set_yticks([0,1]); ax.set_yticklabels(['No','Sí'])
     ax.set_xlabel(b); ax.set_ylabel(a)
@@ -186,7 +186,7 @@ fig, axes = plt.subplots(1,3, figsize=(12,4), sharey=True)
 for ax, col, title, color in zip(
     axes,
     ['prog_python','usa_colab','cuenta_github'],
-    ['Edad promedio por Python','Edad promedio por Colab','Edad promedio por GitHub'],
+    ['Edad Media: Python','Edad Media: Colab','Edad Media: GitHub'],
     [accent, accent2, accent3]
 ):
     means = df.groupby(col)['edad'].mean().reindex([True, False])
