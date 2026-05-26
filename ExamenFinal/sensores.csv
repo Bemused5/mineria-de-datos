@@ -1,0 +1,5 @@
+id,ts,temperatura,humedad,ubicacion
+a1,2025-02-01 10:00,23.5,45.2,almacen
+a2,2025/02/01 10:05,,46.0,almacen
+a3,01-02-2025 10:10,22.1,,oficina
+a4,2025-02-01T10:15:00,NA,47.3,oficina
